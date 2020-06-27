@@ -4,7 +4,7 @@
 #include <Windows.h>
 using namespace std;
 
-bool gameOver;
+bool gameOver, gameWin;
 const int wifield = 20;
 const int hefield = 20;
 int x, y, appleX, appleY, score;
@@ -15,6 +15,7 @@ emove step;
 
 void Settings() {
 gameOver = false;
+gameWin = false;
 step = STOP;
 x = wifield / 4;
 y = hefield / 4;
@@ -120,6 +121,9 @@ appleX = rand() % wifield;
 appleY = rand() % hefield;
 ctail++;
 }
+if(score == 115){
+gameWin = true;
+}
 }
 
 int main() {
@@ -129,6 +133,13 @@ Karta();
 Tracking();
 BrainGame();
 Sleep(900);
+}
+if (gameWin) {
+cout « "\nYou won!\n";
+}
+else {
+cout « "\nhahah! You lose!\n";
+cin » gameOver;
 }
 return 0;
 }
